@@ -163,15 +163,20 @@ void *ft_memmove(void *dest, const void  *src, size_t n)
     unsigned char *b;
     int  res;
 
-    *a = (unsigned char *) s1; 
-    *b = (unsigned char *) s2;
+    a = (unsigned char *) s1; 
+    b = (unsigned char *) s2;
     res = 0; 
-    while (--n)
+    while (n--)
     {
-        res = *a - *b;
-        res += res;
+        if (*a != *b)
+        {
+            res = *a - *b;
+            return res;
+        }
+        *a ++;
+        *b ++;
     }
-    return res;       
+    return 0;       
 }
 int ft_toupper(int c)
 {
@@ -184,6 +189,24 @@ int ft_tolower(int c)
     if(c >= 97 && c <= 122)
         c  -= 32;
     return c;
+}
+
+int ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+    int res;
+
+    res = 0; 
+    while (n--)
+    {
+       if (*a != *b)
+        {
+            res = *s1 - *s2;
+            return res;
+        }
+        *s1 ++;
+        *s2 ++;
+    }
+    return res;  
 }
 
 int main (void)
